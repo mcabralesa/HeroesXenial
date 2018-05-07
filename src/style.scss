@@ -1,0 +1,145 @@
+body {
+  background: './assets/img/background.jpg';
+  background-repeat: repeat-y;
+}
+
+.heroes-container
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.heroes-container:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white center center;
+  border-radius: 25px;
+  opacity: 0.6;
+}
+
+
+
+
+
+
+
+
+.detail-container
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;  
+}
+
+.detail-container:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white center center;
+  border-radius: 25px;
+  opacity: 0.6;
+}
+
+.dcolumn
+{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  div
+  {
+    margin: 8px;
+  }
+
+  input {
+    margin: 8px;
+    width: 400px;
+  }
+}
+
+
+
+.hero-container
+{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  border-radius: 25px;
+  margin: 20px;
+  width: 430px;
+
+  .data-container
+  {
+    margin: 20px; display: flex; flex-direction: column; justify-content: center;
+    .nickname
+    {
+      margin-bottom: 6px; color: red;
+      font-size: 27px;
+      font-weight: bolder;
+    }
+
+    .data{
+      margin-bottom: 3px; color: gray; font-size: 18px;
+    }
+  }
+
+  
+
+
+  .img-container
+  {
+    margin: 20px;
+
+    img
+    {
+      border-radius: 50%; width: 200px; height: 200px
+    }
+
+    .index-booble
+    {
+      background: red;
+    opacity: 0.7;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    left: 160px;
+    top: 27px;
+    border-radius: 50%;
+    margin: -35px;
+
+    .index{
+      position: relative;
+      top: 16px;
+      left: 13px;
+      color: white;
+      font-size: xx-large;
+      font-weight: bolder;
+    }
+    }
+  }
+}
+
+
+

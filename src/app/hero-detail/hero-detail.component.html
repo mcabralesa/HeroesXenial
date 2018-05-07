@@ -1,0 +1,17 @@
+<input type="button" value="Regresar" routerLink="/heroesList" routerLinkActive="active">
+<div class="detail-container">
+    <div class="dcolumn">
+        <div>Nickname:</div>
+        <div>Nombre:</div>
+        <div>Estatura:</div>
+        <div>Picture:</div>
+    </div>
+    <div class="dcolumn" *ngIf="heroes | async as hr">
+            <input type="text" [(ngModel)]="hr[index]._nickname">
+            <input type="text" [(ngModel)]="hr[index]._name">
+            <input type="text" [(ngModel)]="hr[index]._height">
+            <input type="text" [(ngModel)]="hr[index]._picture">
+        </div>
+</div>
+
+

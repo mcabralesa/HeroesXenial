@@ -1,0 +1,15 @@
+import {Hero} from "./hero";
+
+
+export function heroesReducer(state: Hero[] = [], action) {
+    switch (action.type) {
+        case 'ADD_ALL':
+            state = action.payload;
+           return state;
+        case 'ADD_ONE':
+            state.push(action.payload);
+           return state;
+        default:
+            return state;
+    }
+}
