@@ -24,7 +24,7 @@ const appRoutes: Routes = [
 ];
 
 
-describe('WelcomeComponent (class only)', () => {
+describe('Hero Detail Component', () => {
     let component: HeroDetailComponent;
     let fixture: ComponentFixture<HeroDetailComponent>;
     let store: Store<any>;
@@ -32,15 +32,23 @@ describe('WelcomeComponent (class only)', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
             declarations: [HeroDetailComponent],
-            imports: [ FormsModule,
+            imports: [FormsModule,
                 StoreModule.forRoot({heroes: heroesReducer}),
                 RouterModule.forRoot(appRoutes, {enableTracing: true, useHash: true})]
+        }).compileComponents().then(() => {
+            fixture = TestBed.createComponent(HeroDetailComponent);
+            component = TestBed.get(HeroDetailComponent);
+            console.log("Dentro Then");
         });
 
-        fixture = TestBed.createComponent(HeroDetailComponent);
-        component = TestBed.get(HeroDetailComponent);
 
     });
+
+    it('Should Load de component', () => {
+        expect(component).toBeDefined();
+    });
+
+
     //
     // beforeEach(() => {
     //     fixture = TestBed.createComponent(HeroDetailComponent);
@@ -53,12 +61,6 @@ describe('WelcomeComponent (class only)', () => {
     //     //     }
     //     // });
     // });
-
-
-
-    it('should not have welcome message after construction', () => {
-        expect(component.index).toBeUndefined();
-    });
 
     // it('should welcome logged in user after Angular calls ngOnInit', () => {
     //     comp.ngOnInit();
