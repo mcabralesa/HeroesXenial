@@ -3,7 +3,6 @@ import {Hero} from '../hero';
 import { Router } from '@angular/router';
 
 @Component({
-    moduleId: module.id,
     selector: 'hero',
     templateUrl: './hero.component.html'
 })

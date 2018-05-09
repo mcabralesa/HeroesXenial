@@ -1,3 +1,4 @@
+// #docregion
 var webpackConfig = require('./webpack.test');
 
 module.exports = function (config) {
@@ -7,11 +8,11 @@ module.exports = function (config) {
     frameworks: ['jasmine'],
 
     files: [
-      {pattern: './karma-test-shim.js', watched: false}
+      {pattern: './config/karma-test-shim.js', watched: false}
     ],
 
     preprocessors: {
-      './karma-test-shim.js': ['webpack', 'sourcemap']
+      './config/karma-test-shim.js': ['webpack', 'sourcemap']
     },
 
     webpack: webpackConfig,
@@ -24,14 +25,15 @@ module.exports = function (config) {
       noInfo: true
     },
 
-    reporters: ['progress', 'mocha'],
+    reporters: ['progress', 'kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
-    autoWatch: true,
+    autoWatch: false,
     browsers: ['Chrome'],
-    singleRun: false
+    singleRun: true
   };
 
   config.set(_config);
 };
+// #enddocregion

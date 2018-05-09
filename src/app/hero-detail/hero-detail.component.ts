@@ -6,7 +6,7 @@ import { Store } from '@ngrx/store';
 import {AppState} from "../AppState";
 
 @Component({
-    moduleId: module.id,
+    moduleId: module.id + '',
     selector: 'hero-detail',
     templateUrl: './hero-detail.component.html'
 })

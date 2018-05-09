@@ -6,7 +6,6 @@ import {HeroListService} from "./hero-list.service";
 import {AppState} from "../AppState";
 
 @Component({
-    moduleId: module.id + '',
     selector: 'hero-list',
     templateUrl: './hero-list.component.html',
     providers: [HeroListService]
