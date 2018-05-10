@@ -1,78 +1,66 @@
-import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {HeroDetailComponent} from "./hero-detail.component";
 import {Store, StoreModule} from "@ngrx/store";
 import {AppState} from "../AppState";
 import {heroesReducer} from "../heroes.reducer";
-import {HeroListComponent} from "../hero-list/hero-list.component";
-import {ActivatedRoute, RouterModule, Routes} from "@angular/router";
+import {ActivatedRoute, Params} from "@angular/router";
 import {FormsModule} from "@angular/forms";
+import {Subject} from "rxjs/Subject";
+import {Hero} from "../hero";
 
-const appRoutes: Routes = [
-    {
-        path: 'heroesList',
-        component: HeroListComponent
-    },
-    {
-        path: 'heroDetail/:index',
-        component: HeroDetailComponent
-    },
-    {
-        path: '**',
-        redirectTo: '/heroesList',
-        pathMatch: 'full'
-    }
-];
+// class MockActivatedRoute {
+//     // here you can add your mock objects, like snapshot or parent or whatever
+//     // example:
+//     params: Params
+// }
 
 
 describe('Hero Detail Component', () => {
     let component: HeroDetailComponent;
     let fixture: ComponentFixture<HeroDetailComponent>;
+    let params: Subject<Params>;
     let store: Store<any>;
+    let tableData : Hero[];
+    tableData = [
+        {
+            "_name": "Anthony Stark",
+            "_height": 6.1,
+            "_picture": "http://i.annihil.us/u/prod/marvel/i/mg/6/a0/55b6a25e654e6/standard_xlarge.jpg",
+            "_nickname": "Iron Man"
+        }
+    ];
 
     beforeEach(() => {
+        params = new Subject<Params>();
         TestBed.configureTestingModule({
             declarations: [HeroDetailComponent],
+            providers: [{provide: ActivatedRoute, useValue: {params: params}}],
             imports: [FormsModule,
-                StoreModule.forRoot({heroes: heroesReducer}),
-                RouterModule.forRoot(appRoutes, {enableTracing: true, useHash: true})]
-        }).compileComponents().then(() => {
-            fixture = TestBed.createComponent(HeroDetailComponent);
-            component = TestBed.get(HeroDetailComponent);
-            console.log("Dentro Then");
+                StoreModule.forRoot({heroes: heroesReducer})
+            ]
         });
 
-
+        fixture = TestBed.createComponent(HeroDetailComponent);
+        component = fixture.componentInstance;
+        store = fixture.debugElement.injector.get(Store);
+        store.dispatch({ type: 'ADD_ALL', payload: <Hero[]> tableData});
     });
 
     it('Should Load de component', () => {
         expect(component).toBeDefined();
     });
 
+    it('store to be defined', async(() => {
+        expect(store).toBeDefined();
+    }));
 
-    //
-    // beforeEach(() => {
-    //     fixture = TestBed.createComponent(HeroDetailComponent);
-    //     component = fixture.componentInstance;
-    //     store = fixture.debugElement.injector.get(Store);
-    //     // store.dispatch({
-    //     //     type: ACTIONS.LOAD_DATA,
-    //     //     payload: {
-    //     //         demoSlice: tableData
-    //     //     }
-    //     // });
-    // });
+    it('Params index should be establish', fakeAsync(() => {
+        fixture.detectChanges();
+        params.next({ 'index': 1 });
+        tick();
+        expect(component.index).toBe(0);
+    }));
 
-    // it('should welcome logged in user after Angular calls ngOnInit', () => {
-    //     comp.ngOnInit();
-    //     expect(comp.welcome).toContain(userService.user.name);
-    // });
-    //
-    // it('should ask user to log in if not logged in after ngOnInit', () => {
-    //     userService.isLoggedIn = false;
-    //     comp.ngOnInit();
-    //     expect(comp.welcome).not.toContain(userService.user.name);
-    //     expect(comp.welcome).toContain('log in');
-    // });
-    // #enddocregion class-only-tests
+
 });
 

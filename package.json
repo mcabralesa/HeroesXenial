@@ -4,7 +4,7 @@
   "scripts": {
     "build": "rimraf dist && webpack --config config/webpack.dev.js --progress --profile --bail",
     "start": "webpack-dev-server --inline --progress --open --port 8080",
-    "test": "karma start"
+    "test": "karma start karma.webpack.conf.js --single-run=false"
   },
   "license": "MIT",
   "dependencies": {
@@ -21,26 +21,27 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
-    "@types/node": "^6.0.45",
     "@types/jasmine": "2.5.36",
+    "@types/node": "^6.0.45",
     "angular2-template-loader": "^0.6.0",
     "awesome-typescript-loader": "^3.0.4",
+    "copy-webpack-plugin": "^4.5.1",
     "css-loader": "^0.28.11",
     "extract-text-webpack-plugin": "2.0.0-beta.5",
     "html-loader": "^0.4.3",
     "html-webpack-plugin": "^2.16.1",
-    "copy-webpack-plugin": "^4.5.1",
     "jasmine-core": "^2.4.1",
     "karma": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
+    "karma-mocha-reporter": "^2.2.5",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^2.0.1",
     "node-sass": "^4.8.3",
     "null-loader": "^0.1.1",
     "raw-loader": "^0.5.1",
-    "sass-loader": "^7.0.1",
     "rimraf": "^2.5.2",
+    "sass-loader": "^7.0.1",
     "style-loader": "^0.13.1",
     "typescript": "~2.3.1",
     "webpack": "2.2.1",
