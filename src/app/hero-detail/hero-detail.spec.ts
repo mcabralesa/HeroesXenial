@@ -7,6 +7,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {Subject} from "rxjs/Subject";
 import {Hero} from "../hero";
+import {By} from "@angular/platform-browser";
 
 
 describe('Hero Detail Component', () => {
@@ -14,7 +15,7 @@ describe('Hero Detail Component', () => {
     let fixture: ComponentFixture<HeroDetailComponent>;
     let params: Subject<Params>;
     let store: Store<AppState>;
-    let tableData : Hero[];
+    let tableData: Hero[];
     tableData = [
         {
             "_name": "Anthony Stark",
@@ -37,7 +38,7 @@ describe('Hero Detail Component', () => {
         fixture = TestBed.createComponent(HeroDetailComponent);
         component = fixture.componentInstance;
         store = fixture.debugElement.injector.get(Store);
-        store.dispatch({ type: 'ADD_ALL', payload: <Hero[]> tableData});
+        store.dispatch({type: 'ADD_ALL', payload: <Hero[]> tableData});
     });
 
     it('Should Load de component', () => {
@@ -48,12 +49,16 @@ describe('Hero Detail Component', () => {
         expect(store).toBeDefined();
     }));
 
-    it('Params index should be establish', fakeAsync (() => {
-        fixture.detectChanges();
-        params.next({ 'index': 1 });
-        tick();
+    it('Params index should be establish and load hero', fakeAsync(() => {
+        component.ngOnInit();
+        params.next({'index': 1});
         expect(component.index).toBe(0);
+        fixture.detectChanges();
+        tick();
+        let el = fixture.debugElement.query(By.css('#nickname'));
+        expect(el.nativeElement.value).toBe('Iron Man');
     }));
+
 
 
 });

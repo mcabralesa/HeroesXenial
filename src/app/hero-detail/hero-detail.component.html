@@ -6,12 +6,12 @@
         <div>Estatura:</div>
         <div>Picture:</div>
     </div>
-    <div class="dcolumn" *ngIf="heroes | async as hr">
-            <input type="text" [(ngModel)]="hr[index]._nickname">
-            <input type="text" [(ngModel)]="hr[index]._name">
-            <input type="text" [(ngModel)]="hr[index]._height">
-            <input type="text" [(ngModel)]="hr[index]._picture">
-        </div>
+    <div class="dcolumn">
+        <input id="nickname" type="text" [(ngModel)]="_nickname">
+        <input type="text" [(ngModel)]="_name">
+        <input type="text" [(ngModel)]="_height">
+        <input type="text" [(ngModel)]="_picture">
+    </div>
 </div>
 
 
