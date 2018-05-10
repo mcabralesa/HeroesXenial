@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {async, ComponentFixture, TestBed, tick} from "@angular/core/testing";
 import {HeroDetailComponent} from "./hero-detail.component";
 import {Store, StoreModule} from "@ngrx/store";
 import {AppState} from "../AppState";
@@ -8,18 +8,12 @@ import {FormsModule} from "@angular/forms";
 import {Subject} from "rxjs/Subject";
 import {Hero} from "../hero";
 
-// class MockActivatedRoute {
-//     // here you can add your mock objects, like snapshot or parent or whatever
-//     // example:
-//     params: Params
-// }
-
 
 describe('Hero Detail Component', () => {
     let component: HeroDetailComponent;
     let fixture: ComponentFixture<HeroDetailComponent>;
     let params: Subject<Params>;
-    let store: Store<any>;
+    let store: Store<AppState>;
     let tableData : Hero[];
     tableData = [
         {
@@ -54,7 +48,7 @@ describe('Hero Detail Component', () => {
         expect(store).toBeDefined();
     }));
 
-    it('Params index should be establish', fakeAsync(() => {
+    it('Params index should be establish', async(() => {
         fixture.detectChanges();
         params.next({ 'index': 1 });
         tick();
