@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed, tick} from "@angular/core/testing";
+import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {HeroDetailComponent} from "./hero-detail.component";
 import {Store, StoreModule} from "@ngrx/store";
 import {AppState} from "../AppState";
@@ -48,7 +48,7 @@ describe('Hero Detail Component', () => {
         expect(store).toBeDefined();
     }));
 
-    it('Params index should be establish', async(() => {
+    it('Params index should be establish', fakeAsync (() => {
         fixture.detectChanges();
         params.next({ 'index': 1 });
         tick();

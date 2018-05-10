@@ -15,12 +15,12 @@ export class HeroListComponent implements OnInit {
     heroesNgrx$: Observable<Hero[]>;
 
     constructor(private store: Store<AppState>, private service: HeroListService) {
-        this.heroesNgrx$ = this.store.select(state => state.heroes);
+
     }
 
 
     ngOnInit() {
-
+        this.heroesNgrx$ = this.store.select(state => state.heroes);
         this.heroesNgrx$.subscribe(result => {
             if (result.length === 0) {
                 this.service.getHeroes()

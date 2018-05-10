@@ -16,13 +16,13 @@ export class HeroDetailComponent implements OnInit {
     index: number;
 
     constructor(private route: ActivatedRoute, private store: Store<AppState>) {
-        this.heroes = this.store.select(state => state.heroes);
     }
 
     ngOnInit() {
         this.route.params.subscribe(params => {
             this.index = +params['index'];
             this.index--;
+            this.heroes = this.store.select(state => state.heroes);
         });
     }
 
