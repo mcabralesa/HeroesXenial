@@ -1,7 +1,9 @@
-<div class="heroes-container">
-        <div *ngFor="let hero of heroesNgrx$ | async index as i; ">
-            <hero [hero]="hero" [index]="i+1"></hero>
-        </div>
+<div class = "heroes-container"
+     *ngIf = "heroesNgrx$ | async as heroes">
+    <div *ngFor = "let item of heroes; let i = index">
+        <hero [hero] = "item"
+              [index] = "i+1"></hero>
+    </div>
 </div>
 
 
