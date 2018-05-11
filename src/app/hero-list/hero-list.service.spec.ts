@@ -1,5 +1,5 @@
 import {HeroListService} from "./hero-list.service";
-import {Hero} from "../hero";
+import {Hero} from "../commons/hero";
 import {asyncData} from "../../testing/async-observable-helpers";
 
 describe('Hero List Service', () => {

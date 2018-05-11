@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {Hero} from '../hero';
+import {Hero} from '../commons/hero';
 import {ActivatedRoute} from '@angular/router';
 import {Observable} from 'rxjs/Observable';
 import {Store} from '@ngrx/store';
-import {AppState} from "../AppState";
+import {AppState} from "../commons/AppState";
 
 @Component({
     moduleId: module.id + '',

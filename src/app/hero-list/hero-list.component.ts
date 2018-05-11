@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {Store} from '@ngrx/store';
-import {Hero} from '../hero';
+import {Hero} from '../commons/hero';
 import {Observable} from 'rxjs/Observable';
 import {HeroListService} from "./hero-list.service";
-import {AppState} from "../AppState";
+import {AppState} from "../commons/AppState";
 
 @Component({
     selector: 'hero-list',

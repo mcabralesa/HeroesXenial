@@ -1,12 +1,12 @@
 import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {HeroDetailComponent} from "./hero-detail.component";
 import {Store, StoreModule} from "@ngrx/store";
-import {AppState} from "../AppState";
-import {heroesReducer} from "../heroes.reducer";
+import {AppState} from "../commons/AppState";
+import {heroesReducer} from "../reducers/heroes.reducer";
 import {ActivatedRoute, Params} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {Subject} from "rxjs/Subject";
-import {Hero} from "../hero";
+import {Hero} from "../commons/hero";
 import {By} from "@angular/platform-browser";
 
 
@@ -58,8 +58,6 @@ describe('Hero Detail Component', () => {
         let el = fixture.debugElement.query(By.css('#nickname'));
         expect(el.nativeElement.value).toBe('Iron Man');
     }));
-
-
 
 });
 

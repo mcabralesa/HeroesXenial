@@ -1,4 +1,4 @@
-import {Hero} from "./hero";
+import {Hero} from "../commons/hero";
 
 
 export function heroesReducer(state: Hero[] = [], action: any) {

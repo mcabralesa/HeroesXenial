@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppComponent} from './app.component';
 import {HeroesComponent} from "./hero/hero.component";
 import { StoreModule } from '@ngrx/store';
-import { heroesReducer } from './heroes.reducer';
+import { heroesReducer } from './reducers/heroes.reducer';
 import { RouterModule, Routes} from '@angular/router';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroListComponent } from './hero-list/hero-list.component';
