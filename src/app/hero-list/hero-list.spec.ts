@@ -1,4 +1,4 @@
-import {async, ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
+import {ComponentFixture, fakeAsync, TestBed, tick} from "@angular/core/testing";
 import {FormsModule} from "@angular/forms";
 import {HeroListComponent} from "./hero-list.component";
 import {Store, StoreModule} from "@ngrx/store";
@@ -10,7 +10,6 @@ import {Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
 import {HeroesComponent} from "../hero/hero.component";
 import {HttpClientModule} from "@angular/common/http";
-import {Router} from "@angular/router";
 import {RouterTestingModule} from "@angular/router/testing";
 
 
@@ -23,11 +22,9 @@ describe('Hero List Component', () => {
     let spy;
 
     beforeEach(() => {
-        //params = new Subject<Params>();
         TestBed.configureTestingModule({
             declarations: [HeroListComponent, HeroesComponent],
             providers: [HeroListService],
-            //providers: [{provide: HeroListService, useClass: MockHeroListService}],
             imports: [FormsModule,
                 HttpClientModule,
                 RouterTestingModule.withRoutes([]),
